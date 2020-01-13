@@ -30,11 +30,25 @@ int main(void) {
 	unsigned char A = 0x00;	    
 	    switch(A) {
 		case 0x00:
-		C = SetBit(C, 6, 1);
+		C = SetBit(C, 6, 1); // low fuel light
 		break;
+		
+		case 0x01:
+		case 0x02:
+		C = SetBit(C, 6, 1);
+		C = SetBit(C, 5, 1);
+		break;
+
+		case 0x03:
+		case 0x04:
+		C = SetBit(C, 6, 1);
+                C = SetBit(C, 5, 1);
+		C = SetBit(C, 4, 1);
+                break;
 	    }
 	
 	PORTC = C;
+	C = 0x00;
 
     }
 
