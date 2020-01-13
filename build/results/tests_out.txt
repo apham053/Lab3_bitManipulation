@@ -1,7 +1,31 @@
-Breakpoint 1 at 0xee: file source/main.c, line 26.
+Breakpoint 1 at 0x116: file source/main.c, line 29.
 Note: automatically using hardware breakpoints for read-only addresses.
 ======================================================
 Running all tests..."
 
-"PINA: 0x00, PINB: 0x00 => PORTC: 0x00"..."PINA: 0xFF, PINB: 0x00 => PORTC: 0x08"..."PINA: 0x00, PINB: 0xAE => PORTC: 0x05"..."PINA: 0x0F, PINB: 0xC4 => PORTC: 0x07"..."PINA: 0xFF, PINB: 0xFF => PORTC: 0x10"...======================================================
+"PINA: 0x00 => PORTC: 0x40"..."PINA: 0x02 => PORTC: 0x06"...
+	Expected 0x06 
+	PORTC '0x800028:	0x40
+"PINA: 0x04 => PORTC: 0x07"...
+	Expected 0x07 
+	PORTC '0x800028:	0x40
+"PINA: 0x06 => PORTC: 0x38"...
+	Expected 0x38 
+	PORTC '0x800028:	0x40
+"PINA: 0x08 => PORTC: 0x3C"...
+	Expected 0x3C 
+	PORTC '0x800028:	0x40
+"PINA: 0x0A => PORTC: 0x3E"...
+	Expected 0x3E 
+	PORTC '0x800028:	0x40
+"PINA: 0x0C => PORTC: 0x3E"...
+	Expected 0x3E 
+	PORTC '0x800028:	0x40
+"PINA: 0x0E => PORTC: 0x3F"...
+	Expected 0x3F 
+	PORTC '0x800028:	0x40
+"PINA: 0x0F => PORTC: 0x3F"...
+	Expected 0x3F 
+	PORTC '0x800028:	0x40
+======================================================
 Quitting: Remote doesn't know how to detach

@@ -12,24 +12,29 @@
 #include "simAVRHeader.h"
 #endif
 
+
+unsigned char SetBit(unsigned char x, unsigned char k, unsigned char b) {
+   return (b ?  (x | (0x01 << k))  :  (x & ~(0x01 << k)) );
+              //   Set bit to 1           Set bit to 0
+}
+
 int main(void) {
     DDRA = 0x00;
-    DDRB = 0x00;
     DDRC = 0xFF;
     PORTA = 0xFF;
-    PORTB = 0xFF;
     PORTC = 0x00;
-
-    unsigned char num = 0x00; // var to keep track of total number of 1's
- //   unsigned char B = 0x00; 
+    
+    unsigned char C = 0x00;
 
     while (1) {
-
-	num = (PINA & 0x01) + (PINA >> 1 & 0x01) + (PINA >> 2 & 0x01) + (PINA >> 3 & 0x01) + (PINA >> 4 & 0x01) + (PINA >> 5 & 0x01) + (PINA >> 6 & 0x01) + (PINA >> 7 & 0x01); // shift PINA down 7 times																						    // to evaluate each PIN
-																						// by ANDING with 00000001
-	num = num + (PINB & 0x01) + (PINB >> 1 & 0x01) + (PINB >> 2 & 0x01) + (PINB >> 3 & 0x01) + (PINB >> 4 & 0x01) + (PINB >> 5 & 0x01) + (PINB >> 6 & 0x01) + (PINB >> 7 & 0x01);
-
-        PORTC = num;		
+	unsigned char A = 0x00;	    
+	    switch(A) {
+		case 0x00:
+		C = SetBit(C, 6, 1);
+		break;
+	    }
+	
+	PORTC = C;
 
     }
 
