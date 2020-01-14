@@ -1,8 +1,8 @@
 /*	Author: apham053
  *  Partner(s) Name: Steven Rodriguez
  *	Lab Section: 021
- *	Assignment: Lab #3  Exercise #3
- *	Exercise Description:
+ *	Assignment: Lab #3  Exercise #1
+ *	Exercise Description: Count the number of 1s on ports A and B and output *      that number on port C. 
  *
  *	I acknowledge all content contained herein, excluding template or example
  *	code, is my own original work.
@@ -18,10 +18,6 @@ unsigned char SetBit(unsigned char x, unsigned char k, unsigned char b) {
               //   Set bit to 1           Set bit to 0
 }
 
-unsigned char GetBit(unsigned char x, unsigned char k) {
-   return ((x & (0x01 << k)) != 0);
-}
-
 int main(void) {
     DDRA = 0x00;
     DDRC = 0xFF;
@@ -31,53 +27,44 @@ int main(void) {
     unsigned char C = 0x00;
 
     while (1) {
-	unsigned char A = (PINA & 0xFF); //set A to PINA	    
-	    
-		if (GetBit(A, 4) && GetBit(A,5)) {
-                    if(!(GetBit(A, 6))) {
-                        C = SetBit(C, 7, 1);
-                    }
-                }
-		
-		A = A << 4;
-		
-		switch(A) {
+	unsigned char A = PINA & 0xFF; //set A to PINA	    
+	    switch(A) {
 		case 0x00:
 		C = SetBit(C, 6, 1); // low fuel light
 		break;
 		
-		case 0x10:
-		case 0x20:
+		case 0x01:
+		case 0x02:
 		C = SetBit(C, 6, 1);
 		C = SetBit(C, 5, 1);
 		break;
 
-		case 0x30:
-		case 0x40:
+		case 0x03:
+		case 0x04:
 		C = SetBit(C, 6, 1);
                 C = SetBit(C, 5, 1);
 		C = SetBit(C, 4, 1);
                 break;
 
-		case 0x50:
-                case 0x60:
+		case 0x05:
+                case 0x06:
                 C = SetBit(C, 5, 1);
                 C = SetBit(C, 4, 1);
 		C = SetBit(C, 3, 1);
                 break;
 
-		case 0x70:
-                case 0x80:
-		case 0x90:
+		case 0x07:
+                case 0x08:
+		case 0x09:
                 C = SetBit(C, 5, 1);
                 C = SetBit(C, 4, 1);
                 C = SetBit(C, 3, 1);
 		C = SetBit(C, 2, 1);
                 break;
 	        
-		case 0xA0:
-                case 0xB0:
-                case 0xC0:
+		case 0x0A:
+                case 0x0B:
+                case 0x0C:
                 C = SetBit(C, 5, 1);
                 C = SetBit(C, 4, 1);
                 C = SetBit(C, 3, 1);
@@ -85,16 +72,16 @@ int main(void) {
 		C = SetBit(C, 1, 1);
                 break;
 
-		case 0xD0:
-		case 0xE0:
-		case 0xF0:
+		case 0x0D:
+		case 0x0E:
+		case 0x0F:
 		C = SetBit(C, 5, 1);
                 C = SetBit(C, 4, 1);
                 C = SetBit(C, 3, 1);
                 C = SetBit(C, 2, 1);
                 C = SetBit(C, 1, 1);
 		C = SetBit(C, 0, 1);
-		break;
+		break;			
 	    }
 	
 	PORTC = C;
