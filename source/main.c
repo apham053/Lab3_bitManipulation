@@ -1,7 +1,7 @@
 /*	Author: apham053
  *  Partner(s) Name: Steven Rodriguez
  *	Lab Section: 021
- *	Assignment: Lab #3  Exercise #4
+ *	Assignment: Lab #3  Exercise #5
  *	Exercise Description:
  *
  *	I acknowledge all content contained herein, excluding template or example
@@ -23,26 +23,31 @@ unsigned char GetBit(unsigned char x, unsigned char k) {
 }
 
 int main(void) {
-    DDRA = 0x00;
-    DDRB = 0xFF;
-    DDRC = 0xFF;
-    PORTA = 0xFF;
-    PORTB = 0x00;
-    PORTC = 0x00;
-    
+
+    DDRD = 0x00;
+    DDRB = 0xFE;  // setting portB(7-1) to outputs and portB0 to input
+    PORTD = 0xFF;
+    PORTB = 0x01;
+
+    unsigned char sum = 0x00;
     unsigned char B = 0x00;
-    unsigned char C = 0x00;
 
     while (1) {
-	unsigned char A = (PINA & 0xFF); //set A to PINA
-	
-	B = A >> 4;
-	C = A << 4; 
-	
+	unsigned char D = (PIND & 0xFF); // read PIND
+	unsigned char B0 = (PINB & 0x01); // read PINB0
+
+	sum = D + B0;
+
+	if (sum >= 0x46) {
+	    SetBit(B, 1, 1);    
+	}
+
+	else if ((sum < 0x46) && (sum > 0x05)) {
+	    SetBit(B, 2, 1);
+	}
+
 	PORTB = B;
-	PORTC = C;
 	B = 0x00;
-	C = 0x00;		    
     }
 	
 
