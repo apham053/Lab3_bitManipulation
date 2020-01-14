@@ -33,7 +33,7 @@ int main(void) {
     while (1) {
 	unsigned char A = (PINA & 0xFF); //set A to PINA	    
 	    
-		if (GetBit(A, 4) && GetBit(A,5)) {
+		if (GetBit(A, 4) && GetBit(A,5)) { 
                     if(!(GetBit(A, 6))) {
                         C = SetBit(C, 7, 1);
                     }

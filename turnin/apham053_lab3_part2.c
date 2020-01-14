@@ -1,8 +1,8 @@
 /*	Author: apham053
  *  Partner(s) Name: Steven Rodriguez
  *	Lab Section: 021
- *	Assignment: Lab #3  Exercise #1
- *	Exercise Description: Count the number of 1s on ports A and B and output *      that number on port C. 
+ *	Assignment: Lab #3  Exercise #2
+ *	Exercise Description: 
  *
  *	I acknowledge all content contained herein, excluding template or example
  *	code, is my own original work.

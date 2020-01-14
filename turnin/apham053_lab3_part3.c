@@ -33,13 +33,13 @@ int main(void) {
     while (1) {
 	unsigned char A = (PINA & 0xFF); //set A to PINA	    
 	    
-		if (GetBit(A, 4) && GetBit(A,5)) {
-                    if(!(GetBit(A, 6))) {
-                        C = SetBit(C, 7, 1);
+		if (GetBit(A, 4) && GetBit(A,5)) {   // check if driver is seated and key is in ignite, if both yes (1)
+                    if(!(GetBit(A, 6))) {            // check if seatbelt fastened, if no (0), logical NOT to 1 so the body execute
+                        C = SetBit(C, 7, 1);         
                     }
                 }
 		
-		A = A << 4;
+		A = A << 4;    // bit shift to the left 4 to account for seatbelt, seated, and key in ignition since I used a switch statement
 		
 		switch(A) {
 		case 0x00:
@@ -98,7 +98,7 @@ int main(void) {
 	    }
 	
 	PORTC = C;
-	C = 0x00;
+	C = 0x00;   // reset
 
     }
 
